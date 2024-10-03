@@ -1,0 +1,24 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0; 
+  text-align: center;
+}
+
+.main-content {
+  display: grid;
+  grid-template-rows: auto 1fr; 
+  height: 100vh; 
+}
+
+.content {
+  display: flex; 
+  flex: 1;
+}
+
+main {
+  flex: 1; 
+  padding: 20px; 
+  background-color: #F0F5FA;
+  overflow-y: auto; 
+}

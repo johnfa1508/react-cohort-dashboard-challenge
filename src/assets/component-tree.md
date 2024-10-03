@@ -1,10 +1,11 @@
 ### COMPONENTS
 App
-* Header
-* Navbar
-  * |--> Home
-    * |--> PostForm
-    * |--> PostFeed
-      * |--> Post
-        * |--> PostComment
-        * |--> PostCommentForm
+* ContextProvider
+  * |--> Header
+  * |--> Navbar
+    * |--> Home
+      * |--> PostForm
+      * |--> PostFeed
+        * |--> Post
+          * |--> PostComment
+          * |--> PostCommentForm
