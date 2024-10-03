@@ -9,3 +9,5 @@ App
         * |--> Post
           * |--> PostComment
           * |--> PostCommentForm
+    * |--> ViewProfile
+  * |--> ViewPost
