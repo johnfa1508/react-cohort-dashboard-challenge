@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import { useContext } from 'react';
+import { UserContext } from '../context';
 
 export default function Navbar() {
+	const { user } = useContext(UserContext);
+
 	return (
 		<>
 			<nav>
@@ -25,7 +29,7 @@ export default function Navbar() {
 					</li>
 
 					<li>
-						<Link to="/profile">
+						<Link to={`/view/profile/${user?.id}`}>
 							<svg
 								width="41"
 								height="40"

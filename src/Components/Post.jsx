@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PostComment from './PostComment';
 import PostCommentForm from './PostCommentForm';
 import '../styles/Post.css';
+import { Link } from 'react-router-dom';
 
 export default function Post({ post }) {
 	const [postContact, setPostContact] = useState(null);
@@ -53,21 +54,27 @@ export default function Post({ post }) {
 						className="author-avatar"
 						style={{ backgroundColor: postContact.favouriteColour }}
 					>
-						<div className="avatar-initials">
-							<span>
-								{postContact.firstName[0]}
-								{postContact.lastName[0]}
-							</span>
-						</div>
+						<Link to={`/view/profile/${postContact.id}`} className="link">
+							<div className="avatar-initials">
+								<span className="link">
+									{postContact.firstName[0]}
+									{postContact.lastName[0]}
+								</span>
+							</div>
+						</Link>
 					</div>
 
 					<h2>
-						{postContact.firstName} {postContact.lastName}
+						<Link to={`/view/profile/${postContact.id}`} className="link">
+							{postContact.firstName} {postContact.lastName}
+						</Link>
 					</h2>
 				</div>
 
 				<div className="post-content">
-					<p className="post-title">{post.title}</p>
+					<Link to={`/view/post/${post.id}`} className="link">
+						<p className="post-title link">{post.title}</p>
+					</Link>
 					<p>{post.content}</p>
 				</div>
 

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import '../styles/PostComment.css';
+import { Link } from 'react-router-dom';
 
 export default function PostComment({ comment }) {
 	const [commentContact, setCommentContact] = useState(null);
@@ -32,19 +33,23 @@ export default function PostComment({ comment }) {
 	return (
 		<>
 			<div className="comment-card" key={comment.id}>
-				<div
-					className="comment-avatar"
-					style={{ backgroundColor: commentContact.favouriteColour }}
-				>
-					<span>
-						{commentContact.firstName[0]}
-						{commentContact.lastName[0]}
-					</span>
-				</div>
+				<Link to={`/view/profile/${commentContact.id}`} className="link">
+					<div
+						className="comment-avatar"
+						style={{ backgroundColor: commentContact.favouriteColour }}
+					>
+						<span className="link">
+							{commentContact.firstName[0]}
+							{commentContact.lastName[0]}
+						</span>
+					</div>
+				</Link>
 
 				<div className="comment-body">
 					<h4>
-						{commentContact.firstName} {commentContact.lastName}
+						<Link to={`/view/profile/${commentContact.id}`} className="link">
+							{commentContact.firstName} {commentContact.lastName}
+						</Link>
 					</h4>
 
 					<p>{comment.content}</p>
