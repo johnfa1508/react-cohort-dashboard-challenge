@@ -22,7 +22,9 @@ export default function PostComment({ comment }) {
 		return (
 			<>
 				<div>
-					<p className="loading">Loading...</p>
+					<p className="loading" style={{ color: 'black' }}>
+						Loading...
+					</p>
 				</div>
 			</>
 		);

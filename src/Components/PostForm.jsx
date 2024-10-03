@@ -1,10 +1,14 @@
-import { useContext } from 'react';
-import { FormContext, PostContext } from '../context';
+import { useContext, useState } from 'react';
+import { PostContext } from '../context';
 import '../styles/Form.css';
 
 export default function PostForm() {
-	const { formData, setFormData } = useContext(FormContext);
-	const { setPostData, fetchData } = useContext(PostContext);
+	const { setPostData } = useContext(PostContext);
+	const [formData, setFormData] = useState({
+		title: 'test',
+		content: '',
+		contactId: 1,
+	});
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -28,7 +32,6 @@ export default function PostForm() {
 				setPostData((prevContacts) => [...prevContacts, newPost]);
 
 				alert('Post created successfully.');
-				fetchData();
 			})
 			.catch((error) => {
 				console.error('Error creating new post:', error);

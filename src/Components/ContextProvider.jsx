@@ -1,21 +1,12 @@
 /* eslint-disable react/prop-types */
-import { PostContext, FormContext } from '../context.jsx';
+import { PostContext } from '../context.jsx';
 
-export default function ContextProvider({
-	children,
-	postData,
-	setPostData,
-	formData,
-	setFormData,
-	fetchData,
-}) {
+export default function ContextProvider({ children, postData, setPostData }) {
 	return (
 		<>
-			<FormContext.Provider value={{ formData, setFormData }}>
-				<PostContext.Provider value={{ postData, setPostData, fetchData }}>
-					{children}
-				</PostContext.Provider>
-			</FormContext.Provider>
+			<PostContext.Provider value={{ postData, setPostData }}>
+				{children}
+			</PostContext.Provider>
 		</>
 	);
 }
