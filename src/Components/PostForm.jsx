@@ -5,7 +5,7 @@ import '../styles/Form.css';
 export default function PostForm() {
 	const { setPostData } = useContext(PostContext);
 	const [formData, setFormData] = useState({
-		title: 'test',
+		title: '',
 		content: '',
 		contactId: 1,
 	});
@@ -44,6 +44,17 @@ export default function PostForm() {
 				<div className="post-card form-input">
 					<div className="form__input-group">
 						<form className="form" onSubmit={handleSubmit}>
+							<label>
+								<input
+									type="text"
+									name="title"
+									onChange={handleChange}
+									value={formData.title}
+									placeholder="Title"
+									required
+								/>
+							</label>
+
 							<label>
 								<input
 									type="text"
