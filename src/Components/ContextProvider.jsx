@@ -7,11 +7,12 @@ export default function ContextProvider({
 	setUser,
 	postData,
 	setPostData,
+	fetchData,
 }) {
 	return (
 		<>
 			<UserContext.Provider value={{ user, setUser }}>
-				<PostContext.Provider value={{ postData, setPostData }}>
+				<PostContext.Provider value={{ postData, setPostData, fetchData }}>
 					{children}
 				</PostContext.Provider>
 			</UserContext.Provider>

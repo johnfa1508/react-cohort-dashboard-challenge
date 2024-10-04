@@ -3,19 +3,11 @@ import { useEffect, useContext } from 'react';
 import { PostContext } from '../context';
 
 export default function PostFeed() {
-	const { postData, setPostData } = useContext(PostContext);
-	const apiURL = 'https://boolean-uk-api-server.fly.dev/johnfa1508/post/';
+	const { postData, setPostData, fetchData } = useContext(PostContext);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const response = await fetch(apiURL);
-			const jsonData = await response.json();
-
-			setPostData(jsonData);
-		};
-
 		fetchData();
-	}, [setPostData]);
+	}, [fetchData, setPostData]);
 
 	return (
 		<>

@@ -30,8 +30,6 @@ export default function PostForm() {
 			.then((response) => response.json())
 			.then(() => {
 				setPostData((prevContacts) => [...prevContacts, newPost]);
-
-				alert('Post created successfully.');
 			})
 			.catch((error) => {
 				console.error('Error creating new post:', error);

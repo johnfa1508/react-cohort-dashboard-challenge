@@ -32,8 +32,6 @@ export default function PostCommentForm({ post, setPostComments }) {
 			.then((response) => response.json())
 			.then(() => {
 				setPostComments((prevComments) => [...prevComments, newComment]);
-
-				alert('Comment created successfully.');
 			})
 			.catch((error) => {
 				console.error('Error creating new comment:', error);
@@ -54,6 +52,7 @@ export default function PostCommentForm({ post, setPostComments }) {
 								onChange={handleChange}
 								value={commentFormData.content}
 								placeholder="Add a comment..."
+								required
 							/>
 						</label>
 

@@ -9,6 +9,13 @@ import ViewPost from './Components/ViewPost';
 function App() {
 	const [postData, setPostData] = useState([]);
 	const [user, setUser] = useState(null);
+	const apiURL = 'https://boolean-uk-api-server.fly.dev/johnfa1508/post/';
+	const fetchData = async () => {
+		const response = await fetch(apiURL);
+		const jsonData = await response.json();
+
+		setPostData(jsonData);
+	};
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -30,6 +37,7 @@ function App() {
 				setUser={setUser}
 				postData={postData}
 				setPostData={setPostData}
+				fetchData={fetchData}
 			>
 				<BrowserRouter>
 					<Routes>

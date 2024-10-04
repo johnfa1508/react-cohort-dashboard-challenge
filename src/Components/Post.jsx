@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import PostComment from './PostComment';
 import PostCommentForm from './PostCommentForm';
 import '../styles/Post.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { PostContext } from '../context';
 
 export default function Post({ post }) {
 	const [postContact, setPostContact] = useState(null);
@@ -12,6 +13,27 @@ export default function Post({ post }) {
 	const commentsToDisplay = showAllComments
 		? postComments
 		: postComments.slice(0, 3);
+	const { setPostData, fetchData } = useContext(PostContext);
+	const navigate = useNavigate();
+
+	const handleDelete = () => {
+		fetch(`https://boolean-uk-api-server.fly.dev/johnfa1508/post/${post.id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(() => {
+				fetchData();
+				setPostData((prevPost) =>
+					prevPost.filter((currentPost) => currentPost.id !== post.id)
+				);
+				navigate('/');
+			})
+			.catch((error) => {
+				console.error('Error deleting post:', error);
+			});
+	};
 
 	useEffect(() => {
 		const fetchContact = async () => {
@@ -94,12 +116,15 @@ export default function Post({ post }) {
 								: `See all comments (${postComments.length})`}
 						</p>
 					)}
+
 					{commentsToDisplay.map((comment) => (
 						<PostComment comment={comment} key={comment.id} />
 					))}
 				</div>
 
 				<PostCommentForm post={post} setPostComments={setPostComments} />
+
+				<button onClick={handleDelete}>Delete</button>
 			</article>
 		</>
 	);
