@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 export default function Post({ post }) {
 	const [postContact, setPostContact] = useState(null);
 	const [postComments, setPostComments] = useState([]);
+	const [showAllComments, setShowAllComments] = useState(false);
+	const commentsToDisplay = showAllComments
+		? postComments
+		: postComments.slice(0, 3);
 
 	useEffect(() => {
 		const fetchContact = async () => {
@@ -79,9 +83,18 @@ export default function Post({ post }) {
 				</div>
 
 				<div className="comment-section">
-					{/* TODO: Implement this */}
-					<h3>See previous comments</h3>
-					{postComments.map((comment) => (
+					{postComments.length > 3 && (
+						<p
+							className="link"
+							onClick={() => setShowAllComments((prev) => !prev)}
+							style={{ cursor: 'pointer' }}
+						>
+							{showAllComments
+								? `Hide comments`
+								: `See all comments (${postComments.length})`}
+						</p>
+					)}
+					{commentsToDisplay.map((comment) => (
 						<PostComment comment={comment} key={comment.id} />
 					))}
 				</div>
