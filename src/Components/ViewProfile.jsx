@@ -1,5 +1,6 @@
 import Header from '../Components/Header';
 import Navbar from '../Components/Navbar';
+import UserAvatar from './UserAvatar';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/ViewProfile.css';
@@ -94,17 +95,11 @@ export default function ViewProfile() {
 							<form className="form" onSubmit={handleSubmit}>
 								<div className="form-section">
 									<div className="author-info">
-										<div
-											className="author-avatar"
-											style={{ backgroundColor: profile.favouriteColour }}
-										>
-											<div className="avatar-initials">
-												<span>
-													{profile.firstName[0]}
-													{profile.lastName[0]}
-												</span>
-											</div>
-										</div>
+										<UserAvatar
+											user={profile}
+											isLink={false}
+											isComment={false}
+										/>
 
 										<h2>
 											{profile.firstName} {profile.lastName}

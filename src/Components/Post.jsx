@@ -5,6 +5,7 @@ import PostCommentForm from './PostCommentForm';
 import '../styles/Post.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../context';
+import UserAvatar from './UserAvatar';
 
 export default function Post({ post }) {
 	const [postContact, setPostContact] = useState(null);
@@ -76,19 +77,7 @@ export default function Post({ post }) {
 		<>
 			<article className="post-card">
 				<div className="author-info">
-					<div
-						className="author-avatar"
-						style={{ backgroundColor: postContact.favouriteColour }}
-					>
-						<Link to={`/view/profile/${postContact.id}`} className="link">
-							<div className="avatar-initials">
-								<span className="link">
-									{postContact.firstName[0]}
-									{postContact.lastName[0]}
-								</span>
-							</div>
-						</Link>
-					</div>
+					<UserAvatar user={postContact} isLink={true} isComment={false} />
 
 					<h2>
 						<Link to={`/view/profile/${postContact.id}`} className="link">

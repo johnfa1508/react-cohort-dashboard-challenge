@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import '../styles/Header.css';
+import UserAvatar from './UserAvatar';
 import { UserContext } from '../context';
-import { Link } from 'react-router-dom';
 
 export default function Header() {
 	const { user } = useContext(UserContext);
+
 	return (
 		<>
 			<header>
@@ -24,19 +25,7 @@ export default function Header() {
 					/>
 				</svg>
 
-				<div
-					className="author-avatar"
-					style={{ backgroundColor: user?.favouriteColour }}
-				>
-					<Link to={`/view/profile/${user?.id}`} className="link">
-						<div className="avatar-initials">
-							<span className="link">
-								{user?.firstName[0]}
-								{user?.lastName[0]}
-							</span>
-						</div>
-					</Link>
-				</div>
+				<UserAvatar user={user} isLink={true} isComment={false} />
 			</header>
 		</>
 	);

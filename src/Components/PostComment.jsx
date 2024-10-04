@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import '../styles/PostComment.css';
 import { Link } from 'react-router-dom';
+import UserAvatar from './UserAvatar';
 
 export default function PostComment({ comment }) {
 	const [commentContact, setCommentContact] = useState(null);
@@ -33,17 +34,7 @@ export default function PostComment({ comment }) {
 	return (
 		<>
 			<div className="comment-card" key={comment.id}>
-				<Link to={`/view/profile/${commentContact.id}`} className="link">
-					<div
-						className="comment-avatar"
-						style={{ backgroundColor: commentContact.favouriteColour }}
-					>
-						<span className="link">
-							{commentContact.firstName[0]}
-							{commentContact.lastName[0]}
-						</span>
-					</div>
-				</Link>
+				<UserAvatar user={commentContact} isLink={true} isComment={true} />
 
 				<div className="comment-body">
 					<h4>
