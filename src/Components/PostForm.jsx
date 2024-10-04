@@ -53,6 +53,7 @@ export default function PostForm() {
 									onChange={handleChange}
 									value={formData.content}
 									placeholder="What's on your mind?"
+									required
 								/>
 							</label>
 

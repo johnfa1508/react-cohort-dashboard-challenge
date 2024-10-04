@@ -79,6 +79,7 @@ export default function Post({ post }) {
 				</div>
 
 				<div className="comment-section">
+					{/* TODO: Implement this */}
 					<h3>See previous comments</h3>
 					{postComments.map((comment) => (
 						<PostComment comment={comment} key={comment.id} />
