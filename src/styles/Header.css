@@ -4,7 +4,8 @@ header {
   color: white;
   display: flex;
   align-items: center;
-  padding: 0 20px; 
+  justify-content: space-between;
+  padding: 20px; 
 }
 
 .header-logo {

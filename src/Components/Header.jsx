@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import '../styles/Header.css';
+import { UserContext } from '../context';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
+	const { user } = useContext(UserContext);
 	return (
 		<>
 			<header>
@@ -19,7 +23,20 @@ export default function Header() {
 						d="M36.068 22.934H13.07c-.618 0-1.122.505-1.122 1.122v1.122c0 .617.504 1.122 1.121 1.122h23c.616 0 1.121-.505 1.121-1.122v-1.122c0-.617-.505-1.122-1.122-1.122ZM19.38 19.568h10.378c.617 0 1.121-.505 1.121-1.122v-1.122c0-.617-.505-1.121-1.122-1.121H19.38c-.617 0-1.122.505-1.122 1.122v1.121c0 .617.505 1.122 1.122 1.122Zm10.378 10.097H19.38c-.617 0-1.122.505-1.122 1.122v1.122c0 .617.505 1.122 1.122 1.122h10.378c.617 0 1.121-.505 1.121-1.122v-1.122c0-.617-.505-1.122-1.122-1.122Z"
 					/>
 				</svg>
-				{/* TODO: Implement user icon-link here */}
+
+				<div
+					className="author-avatar"
+					style={{ backgroundColor: user?.favouriteColour }}
+				>
+					<Link to={`/view/profile/${user?.id}`} className="link">
+						<div className="avatar-initials">
+							<span className="link">
+								{user?.firstName[0]}
+								{user?.lastName[0]}
+							</span>
+						</div>
+					</Link>
+				</div>
 			</header>
 		</>
 	);
